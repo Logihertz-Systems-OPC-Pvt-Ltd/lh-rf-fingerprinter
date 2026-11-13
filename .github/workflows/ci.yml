@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Python ${{ matrix.python-version }} Test Suite & Audit
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Verify Python Syntax & Bytecode Compilation
+        run: |
+          python -m py_compile src/lh_rf_fingerprinter/*.py tests/*.py
+
+      - name: Run Test Suite with Unittest
+        run: |
+          PYTHONPATH=src python -m unittest discover -s tests -v
+
+      - name: Smoke Test CLI Executable
+        run: |
+          chmod +x bin/lh-rf-fingerprint
+          ./bin/lh-rf-fingerprint --version
+          ./bin/lh-rf-fingerprint --help
+          ./bin/lh-rf-fingerprint scan fixtures/hardened_rff_policy.json
+          ./bin/lh-rf-fingerprint extract fixtures/sample_rf_burst.json
+          ./bin/lh-rf-fingerprint verify-tx \
+            --burst fixtures/sample_rf_burst.json \
+            --db fixtures/enrolled_transmitters_db.json \
+            --claimed-id TX-ALPHA-01
+          ./bin/lh-rf-fingerprint synth-burst \
+            --samples 1024 \
+            --tx-id TX-CI-TEST \
+            --output /tmp/ci_burst.json
+          ./bin/lh-rf-fingerprint extract /tmp/ci_burst.json

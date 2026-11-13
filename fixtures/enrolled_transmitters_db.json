@@ -1,0 +1,59 @@
+{
+  "signed": true,
+  "signature_hex": "3045022100a7b4c9e8d1f2a3b4c5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7",
+  "transmitter_count": 2,
+  "transmitters": {
+    "TX-ALPHA-01": {
+      "transmitter_id": "TX-ALPHA-01",
+      "hardware_model": "Logihertz Tactical SDR Node v2",
+      "mean_vector": [
+        1250.0,
+        0.5,
+        3.0,
+        0.04,
+        -0.03,
+        1.2
+      ],
+      "std_vector": [
+        15.0,
+        0.05,
+        0.2,
+        0.005,
+        0.005,
+        0.15
+      ],
+      "enrolled_at_utc": "2026-11-13T00:00:00Z",
+      "burst_count": 250,
+      "metadata": {
+        "authorized_role": "Tactical Gateway",
+        "frequency_band": "UHF"
+      }
+    },
+    "TX-BRAVO-02": {
+      "transmitter_id": "TX-BRAVO-02",
+      "hardware_model": "Logihertz Cognitive Field Radio v1",
+      "mean_vector": [
+        -2800.0,
+        -0.65,
+        -2.5,
+        -0.02,
+        0.05,
+        2.1
+      ],
+      "std_vector": [
+        20.0,
+        0.06,
+        0.25,
+        0.006,
+        0.006,
+        0.2
+      ],
+      "enrolled_at_utc": "2026-11-13T00:00:00Z",
+      "burst_count": 200,
+      "metadata": {
+        "authorized_role": "Field Sensor Node",
+        "frequency_band": "VHF"
+      }
+    }
+  }
+}

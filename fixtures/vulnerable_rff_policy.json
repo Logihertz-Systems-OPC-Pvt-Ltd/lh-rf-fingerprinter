@@ -1,0 +1,21 @@
+{
+  "rf_fingerprinting_enabled": false,
+  "allow_mac_only_fallback": true,
+  "mahalanobis_threshold": 8.0,
+  "iq_replay_detection_enabled": false,
+  "bind_phy_fingerprint_to_crypto_auth": false,
+  "min_snr_db": 5.0,
+  "enable_iq_imbalance_features": false,
+  "enable_cfo_feature": false,
+  "enable_phase_noise_feature": false,
+  "enable_pa_transient_feature": false,
+  "temperature_drift_compensation": false,
+  "rx_gpsdo_locked": false,
+  "fingerprint_db_signed": false,
+  "allow_unauthenticated_enrollment": true,
+  "min_burst_samples": 128,
+  "oversampling_factor": 1,
+  "multipath_channel_normalization": false,
+  "log_rogue_tx_alerts": false,
+  "capture_forensic_iq_on_reject": false
+}

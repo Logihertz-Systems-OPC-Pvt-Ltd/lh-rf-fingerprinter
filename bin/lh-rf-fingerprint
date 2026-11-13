@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+"""Standalone executable CLI wrapper for lh-rf-fingerprinter."""
+
+import os
+import sys
+
+# Ensure src/ is on PYTHONPATH
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC_DIR = os.path.join(REPO_ROOT, "src")
+if SRC_DIR not in sys.path:
+    sys.path.insert(0, SRC_DIR)
+
+from lh_rf_fingerprinter.cli import main
+
+if __name__ == "__main__":
+    sys.exit(main())
