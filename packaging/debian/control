@@ -1,0 +1,9 @@
+Package: lh-rf-fingerprinter
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Sameer Tawade <ops@logihertz.com>
+Homepage: https://www.logihertz.com
+Description: lh-rf-fingerprint - Multivariate Mahalanobis Physical Transmitter Distance
+ Physical-layer RF transmitter fingerprinting engine extracting Carrier Frequency Offset (CFO), IQ amplitude/phase skew, LO phase noise, and PA transient features for Mahalanobis-distance rogue SDR detection.
