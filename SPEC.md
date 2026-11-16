@@ -143,23 +143,36 @@ Exported SARIF documents validate against the official OASIS schema (`sarif-sche
 
 ---
 
-## Section 6: Future Development Roadmap & Extension Architecture
+## 6. Standalone Future Development Roadmap (`v0.2.0` — `v0.5.0`)
 
-### Milestone v0.2.0: Modular Extensions & Telemetry Streaming
-- **Policy Pack Plugin Hooks**: Enable external declarative YAML/JSON rule-pack loading without source modification.
-- **Hardware Telemetry Streaming**: Real-time integration with SPI, I2C, UART, CAN, and eBPF kernel event rings.
-- **Configurable Severity Weights**: Support custom industrial profiles (e.g. Nuclear/Medical safety vs. Commercial IoT).
+`lh-rf-fingerprinter` is developed as an independent, standalone open-source project. The following roadmap defines the planned architectural, algorithmic, and protocol enhancements for upcoming point releases of `lh-rf-fingerprinter`:
 
-### Milestone v0.5.0: Native STRUCT OS Integration & Daemonless IPC
-- **STRUCT OS Security Bus**: Native zero-copy shared memory integration with the STRUCT OS Security Command Center.
-- **Automated Remediation Synthesis**: Direct IPC bridge with `lh-auto-remediation` for automatic synthesizing of verified unified diffs.
-- **Hardware Root-of-Trust Attestation**: Cryptographic sealing of telemetry reports via TPM 2.0 PCR-bound quotes.
+| Target Release | Milestone Focus | Planned Technical Deliverables for `lh-rf-fingerprinter` |
+|---|---|---|
+| **`v0.2.0`** | Parser & Protocol Expansion | Add Welch PSD spectral flatness, Higher-Order Cumulants ($C_{40}, C_{41}, C_{42}$), and carrier phase-noise power-law slope ($1/f^2, 1/f^3$) feature extractors. |
+| **`v0.3.0`** | Deep Algorithmic & Stateful Analysis | Implement full covariance matrix inversion for correlated multi-dimensional Mahalanobis distance and Support Vector Domain Description (SVDD) novelty detection. |
+| **`v0.4.0`** | Remediation, Synthesis & Format Interop | Add adaptive multipath channel equalization (CMA / LMS blind equalizer) prior to radiometric feature extraction to neutralize indoor reflections. |
+| **`v0.5.0`** | High-Throughput Performance & Formal Verification | Support VITA-49 (VRT) and SigMF IQ stream ingestion with automated crystal temperature-drift kalman tracking. |
 
-### Milestone v1.0.0: High-Assurance Certification & Hardening
-- **FIPS 140-3 Validation**: Cryptographic module boundary verification and NIST CAVP compliance testing.
-- **Common Criteria EAL4+ Alignment**: Formal verification of deterministic security targets and functional invariants.
-- **Automotive & Industrial Compliance**: Formal baseline compliance with ISO 21434 (Automotive Cybersecurity) and IEC 62443 (Industrial Automation & Control Systems).
-- **Signed Binary Attestation**: In-toto attestation and Cosign cryptographic signing across all release artifacts.
+### 6.1 `v0.2.0` — Parser & Protocol Expansion
+- **Format & Protocol Ingestion**: Add Welch PSD spectral flatness, Higher-Order Cumulants ($C_{40}, C_{41}, C_{42}$), and carrier phase-noise power-law slope ($1/f^2, 1/f^3$) feature extractors.
+- **Zero-Dependency Architecture**: Pure standard library implementation with deterministic parsing guarantees and strict error handling.
+- **Verification & Telemetry**: Regression test suites verifying schema edge-cases, malformed payload rejections, and SARIF v2.1.0 output fidelity.
+
+### 6.2 `v0.3.0` — Deep Algorithmic & Stateful Analysis
+- **Algorithmic Core**: Implement full covariance matrix inversion for correlated multi-dimensional Mahalanobis distance and Support Vector Domain Description (SVDD) novelty detection.
+- **State Machine & Analysis Engine**: High-fidelity state tracking, cycle detection, and invariant checking with minimal computational overhead.
+- **Differential & Regression Verification**: Comprehensive test harnesses covering stateful transitions, edge conditions, and mathematical boundary constraints.
+
+### 6.3 `v0.4.0` — Remediation, Synthesis & Format Interoperability
+- **Synthesis & Interoperability**: Add adaptive multipath channel equalization (CMA / LMS blind equalizer) prior to radiometric feature extraction to neutralize indoor reflections.
+- **Automated Remediation Workflows**: Idempotent generation of verified configuration patches, policy rules, and standardized cross-format exports.
+- **Contract & Artifact Validation**: Cryptographic baseline verification and end-to-end integration testing for synthesized deliverables.
+
+### 6.4 `v0.5.0` — High-Throughput Performance & Formal Verification
+- **High-Throughput Optimization**: Support VITA-49 (VRT) and SigMF IQ stream ingestion with automated crystal temperature-drift kalman tracking.
+- **Hardware & Kernel Acceleration**: Vectorized SIMD/eBPF/sub-millisecond streaming execution with bounded memory allocation.
+- **Formal Verification & Assurance**: Mathematical proof of invariant preservation, false-positive calibration, and high-assurance certification baselines.
 
 ---
 
